@@ -13,7 +13,7 @@
     - ##### Ceph RBD for kubernetes
     - ##### RGW
 
-  - #### [管理](https://github.com/Statemood/documents/blob/master/ceph/maintenance-ceph.md)
+  - #### [管理](https://github.com/HyProMgr/documents/blob/master/ceph/maintenance-ceph.md)
     - ##### 添加OSD/在线扩容
       - [方法一(快速)](https://github.com/HyProMgr/documents/blob/master/ceph/the-easy-way-to-add-osds-to-existing-cluster.md)
       - [方法二(细节)](https://github.com/HyProMgr/documents/blob/master/ceph/the-hard-way-to-add-osds-to-existing-cluster.md)
@@ -29,7 +29,7 @@
 
 ## 环境
 #### 系统
-  - CentOS 7 minimal x86_64
+  - CentOS 7.5 minimal x86_64
 
 #### 安全
   - SELinux   
