@@ -6,7 +6,7 @@
   - #### [安装](#安装-1)
   - #### [配置](#配置-1)
   - #### 使用
-    - ##### [使用 iSCSI 将 Ceph 存储连接到 Windows Server](https://github.com/Statemood/documents/blob/master/ceph/use-iscsi-to-windows.md)
+    - ##### [使用 iSCSI 将 Ceph 存储连接到 Windows Server](https://github.com/HyProMgr/documents/blob/master/ceph/use-iscsi-to-windows.md)
 
     - ##### [Ceph 存储池与文件系统](#ceph-存储池与文件系统-1)
       - ##### cephfs & ceph-fuse
@@ -15,10 +15,10 @@
 
   - #### [管理](https://github.com/Statemood/documents/blob/master/ceph/maintenance-ceph.md)
     - ##### 添加OSD/在线扩容
-      - [方法一(快速)](https://github.com/Statemood/documents/blob/master/ceph/the-easy-way-to-add-osds-to-existing-cluster.md)
-      - [方法二(细节)](https://github.com/Statemood/documents/blob/master/ceph/the-hard-way-to-add-osds-to-existing-cluster.md)
+      - [方法一(快速)](https://github.com/HyProMgr/documents/blob/master/ceph/the-easy-way-to-add-osds-to-existing-cluster.md)
+      - [方法二(细节)](https://github.com/HyProMgr/documents/blob/master/ceph/the-hard-way-to-add-osds-to-existing-cluster.md)
     
-    - ##### [删除OSD](https://github.com/Statemood/documents/blob/master/ceph/maintenance-ceph.md#%E5%88%A0%E9%99%A4-osd)
+    - ##### [删除OSD](https://github.com/HyProMgr/documents/blob/master/ceph/maintenance-ceph.md#%E5%88%A0%E9%99%A4-osd)
 
   - #### 高级
     - CRUSH
