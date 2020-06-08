@@ -280,25 +280,25 @@
       fsid = dca70270-3292-4078-91c3-1fbefcd3bd62
 
       mon_initial_members = ceph-0,ceph-1,ceph-2
-      mon_host = 192.168.50.20,192.168.50.21,192.168.50.22
+      mon_host = 192.168.100.165,192.168.100.166,192.168.100.167
       auth_cluster_required = cephx
       auth_service_required = cephx
       auth_client_required = cephx
 
-      public network  = 192.168.50.0/24
-      cluster network = 172.20.0.0/24
+      public network  = 192.168.100.0/24
+      cluster network = 192.168.200.0/24
 
       [mon.a]
       host = ceph-0
-      mon addr = 192.168.50.20:6789
+      mon addr = 192.168.100.165:6789
 
       [mon.b]
       host = ceph-1
-      mon addr = 192.168.50.21:6789
+      mon addr = 192.168.100.166:6789
 
       [mon.c]
       host = ceph-2
-      mon addr = 192.168.50.22:6789
+      mon addr = 192.168.100.167:6789
 
       [osd]
       osd data = /var/lib/ceph/osd/ceph-$id
@@ -344,10 +344,10 @@
       systemctl restart ceph\*.service ceph\*.target
 
 - ##### 此时
-  - ceph-mon 进程应监听在 192.168.50.0 网段IP上
-  - ceph-osd 应分别监听在 192.168.50.0 和 172.20.0.0 两个网段IP上
-  - 172.20.0.0 网段为集群内部复制数据时使用
-  - 192.168.50.0 网段为客户端连接时使用
+  - ceph-mon 进程应监听在 192.168.100.0 网段IP上
+  - ceph-osd 应分别监听在 192.168.100.0 和 192.168.200.0两个网段IP上
+  - 192.168.200.0 网段为集群内部复制数据时使用
+  - 192.168.100.0 网段为客户端连接时使用
 
 
 ## Ceph 存储池与文件系统
