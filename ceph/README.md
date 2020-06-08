@@ -39,29 +39,29 @@
 
 #### 网络
   - 公共网络(供客户端连接使用)
-    - **192.168.50.0/24**
+    - **192.168.100.0/24**
   - 集群网络(供集群内部使用，与其它网络隔离)
-    - **172.20.0.0/24**
+    - **192.168.200.0/24**
 
 #### 软件
-  - Ceph 12.2.4 luminous
-  - Ceph-deploy 2.0.0
+  - Ceph 14.xluminous
+  - Ceph-deploy 2.0.1
 
 
 #### 主机配置及角色
 |  主机          |  IP            |  角色        | 配置        |
 | :----------:  | :------------: | :----------: | ---------- |
-| ceph-0         | em0: 192.168.50.20(**Public**)<br />em1: 172.20.0.20(**Cluster**)   | MON<br />OSD | Intel Xeon X5650 2.67GHz \* 2<br />32G MEM<br />73G SAS x 2 RAID 1(**OS**)<br />SAMSUNG 850PRO 512G SSD \* 1(**Journal**)<br />DELL 600G SAS 10KRPM \* 3(**OSD**)|
-| ceph-1         | em0: 192.168.50.21(**Public**)<br />em1: 172.20.0.21(**Cluster**)   | MON<br />OSD | Intel Xeon X5650 2.67GHz \* 2<br />32G MEM<br />73G SAS x 2 RAID 1(**OS**)<br />SAMSUNG 850PRO 512G SSD \* 1(**Journal**)<br />DELL 600G SAS 10KRPM \* 3(**OSD**)|
-| ceph-2         | em0: 192.168.50.22(**Public**)<br />em1: 172.20.0.22(**Cluster**)   | MON<br />OSD | Intel Xeon X5650 2.67GHz \* 2<br />32G MEM<br />73G SAS x 2 RAID 1(**OS**)<br />SAMSUNG 850PRO 512G SSD \* 1(**Journal**)<br />DELL 600G SAS 10KRPM \* 3(**OSD**)|
+| ceph-0         | em0: 192.168.100.165(**Public**)<br />em1: 18=92.168.200.165(**Cluster**)   | MON<br />OSD | Intel Xeon X5650 2.67GHz \* 2<br />32G MEM<br />73G SAS x 2 RAID 1(**OS**)<br />SAMSUNG 850PRO 512G SSD \* 1(**Journal**)<br />DELL 600G SAS 10KRPM \* 3(**OSD**)|
+| ceph-1         | em0: 192.168.100.166(**Public**)<br />em1: 192.168.200.166(**Cluster**)   | MON<br />OSD | Intel Xeon X5650 2.67GHz \* 2<br />32G MEM<br />73G SAS x 2 RAID 1(**OS**)<br />SAMSUNG 850PRO 512G SSD \* 1(**Journal**)<br />DELL 600G SAS 10KRPM \* 3(**OSD**)|
+| ceph-2         | em0: 192.168.100.167(**Public**)<br />em1: 192.168.200.167(**Cluster**)   | MON<br />OSD | Intel Xeon X5650 2.67GHz \* 2<br />32G MEM<br />73G SAS x 2 RAID 1(**OS**)<br />SAMSUNG 850PRO 512G SSD \* 1(**Journal**)<br />DELL 600G SAS 10KRPM \* 3(**OSD**)|
 
 
 #### 主机配置及角色(最小化配置，供测试及学习)
 |  主机          |  IP            |  角色        | 配置        |
 | :----------:  | :------------: | :----------: | ---------- |
-| ceph-0         | em0: 192.168.50.20(**Public**)<br />em1: 172.20.0.20(**Cluster**)   | MON<br />OSD | CPU 2核心 <br />内存 2G<br />DISK 0 15G(**OS**)<br />DISK 1 10G(**Journal**)<br />DISK 2 20G(**OSD**)<br />DISK 3 20G(**OSD**)|
-| ceph-1         | em0: 192.168.50.21(**Public**)<br />em1: 172.20.0.21(**Cluster**)   | MON<br />OSD | CPU 2核心 <br />内存 2G<br />DISK 0 15G(**OS**)<br />DISK 1 10G(**Journal**)<br />DISK 2 20G(**OSD**)<br />DISK 3 20G(**OSD**)|
-| ceph-2         | em0: 192.168.50.22(**Public**)<br />em1: 172.20.0.22(**Cluster**)   | MON<br />OSD | CPU 2核心 <br />内存 2G<br />DISK 0 15G(**OS**)<br />DISK 1 10G(**Journal**)<br />DISK 2 20G(**OSD**)<br />DISK 3 20G(**OSD**)|
+| ceph-0         | em0: 192.168.100.165(**Public**)<br />em1: 192.168.200.165(**Cluster**)   | MON<br />OSD | CPU 2核心 <br />内存 2G<br />DISK 0 15G(**OS**)<br />DISK 1 10G(**Journal**)<br />DISK 2 20G(**OSD**)<br />DISK 3 20G(**OSD**)|
+| ceph-1         | em0: 192.168.100.166(**Public**)<br />em1: 192.168.200.166(**Cluster**)   | MON<br />OSD | CPU 2核心 <br />内存 2G<br />DISK 0 15G(**OS**)<br />DISK 1 10G(**Journal**)<br />DISK 2 20G(**OSD**)<br />DISK 3 20G(**OSD**)|
+| ceph-2         | em0: 192.168.100.167(**Public**)<br />em1: 192.168.200.167(**Cluster**)   | MON<br />OSD | CPU 2核心 <br />内存 2G<br />DISK 0 15G(**OS**)<br />DISK 1 10G(**Journal**)<br />DISK 2 20G(**OSD**)<br />DISK 3 20G(**OSD**)|
 
 - OSD 磁盘单块10G也可以
 
@@ -73,7 +73,7 @@
 ###### 本步骤要在每一个节点上执行
 - ##### 由于后续安装及配置都涉及到主机名，故此需先绑定
 - ##### 依次在三个节点上执行以下命令完成hosts绑定
-      [root@ceph-0 ~]#  echo -e "\n# Ceph Cluster\n192.168.50.20\tceph-0\n192.168.50.21\tceph-1\n192.168.50.22\tceph-2" >> /etc/hosts
+      [root@ceph-0 ~]#  echo -e "\n# Ceph Cluster\n192.168.100.165tceph-0\n192.168.100.166\tceph-1\n192.168.100.167\tceph-2" >> /etc/hosts
 
 #### 2. SSH RSA Key
 ###### 在ceph-0上操作
